@@ -1,0 +1,38 @@
+# frontend react application
+services:
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_BACKEND_URL: http://127.0.0.1:1258
+    ports:
+      - "1921:80"
+    networks:
+      - my-network
+    depends_on:
+      - backend
+
+  # backend express application
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URI=mongodb://db:27017
+    ports:
+      - "1258:3000"
+    networks:
+      - my-network
+    depends_on:
+      - db
+  # mongodb database
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - my-network
+
+networks:
+  my-network:

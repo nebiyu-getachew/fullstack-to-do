@@ -37,4 +37,4 @@ Contributions are welcome! See the specific README files in the `frontend/` and 
 
 ## Snapshots
 
-<img src="./Frontend/src/assets/home-snapshot.png" alt="home page"/>
+<img src="./Frontend/src/assets/dashboard.png" alt="home page"/>
